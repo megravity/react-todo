@@ -28,7 +28,10 @@ const ContextContainer = (props) => {
   };
 
   useEffect(() => {
-    dispatch({ type: "ONLOAD" });
+    const task = JSON.parse(localStorage.getItem("todos"));
+    if (task) {
+      dispatch({ type: "ONLOAD" });
+    }
   }, []);
   return (
     <MyContext.Provider value={{ todos, todones, addItem, updateItem }}>
